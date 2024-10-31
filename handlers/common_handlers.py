@@ -75,9 +75,6 @@ class Registration(StatesGroup):
 
 @router.message(StateFilter(None),or_f(Command('register'), F.text.casefold() == 'зарегистрироваться'))
 async def register_handler(message: types.Message, state: FSMContext):
-    if RegisteredFilter():
-        await message.answer('Вы уже зарегистрированы')
-        return
     await message.answer(
         "Введите имя", reply_markup=types.ReplyKeyboardRemove()
     )
