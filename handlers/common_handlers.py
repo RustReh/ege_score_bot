@@ -9,7 +9,6 @@ from bot.keyboards import get_keyboard
 
 router = Router()
 
-
 STUDENT_KB = get_keyboard(
     'Посмотреть свои результаты',
     'Добавить результат',
