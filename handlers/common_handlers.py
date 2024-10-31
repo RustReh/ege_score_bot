@@ -130,7 +130,12 @@ class AddScores(StatesGroup):
     score = State()
 
 
-@router.message(RegisteredFilter(), StateFilter(None),or_f(Command('enter_scores'), F.text.casefold() == 'Добавить результат'))
+@router.message(
+    RegisteredFilter(),
+    StateFilter(None),
+    or_f(Command('enter_scores'),
+    F.text.casefold() == 'добавить результат')
+)
 async def add_score_handler(message: types.Message, state: FSMContext):
     await message.answer(
         "Введите название предмета", reply_markup=types.ReplyKeyboardRemove()
