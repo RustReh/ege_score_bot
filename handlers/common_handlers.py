@@ -72,7 +72,10 @@ class Registration(StatesGroup):
     surname = State()
 
 
-@router.message(StateFilter(None),or_f(Command('register'), F.text.casefold() == 'зарегистрироваться'))
+@router.message(
+    StateFilter(None),
+    or_f(Command('register'), F.text.casefold() == 'зарегистрироваться')
+)
 async def register_handler(message: types.Message, state: FSMContext):
     await message.answer(
         "Введите имя", reply_markup=types.ReplyKeyboardRemove()
@@ -133,8 +136,7 @@ class AddScores(StatesGroup):
 @router.message(
     RegisteredFilter(),
     StateFilter(None),
-    or_f(Command('enter_scores'),
-    F.text.casefold() == 'добавить результат')
+    or_f(Command('enter_scores'), F.text.casefold() == 'добавить результат')
 )
 async def add_score_handler(message: types.Message, state: FSMContext):
     await message.answer(
