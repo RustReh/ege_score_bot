@@ -46,3 +46,5 @@ source venv/bin/activate
 pip install -r requirements.txt
 Запуск бота Телеграм
 python main.py
+
+Можно было вынести логику и запросы к бд из ручек в отдельный слой и добавить обработку логики входа/выхода
